@@ -108,3 +108,4 @@ for k in list_with_multiple_dt:
        float_array.append(k)
        
 print("List Array:",list_array,'\n',string_array,'\n',integer_array,'\n',float_array,'\n',boolean_array)
+
