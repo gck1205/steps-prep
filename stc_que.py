@@ -2,7 +2,10 @@ import logging
 import time
 from time import sleep
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s -%(lineno)s - %(message)s')    
+logging.basicConfig(level=logging.DEBUG,
+                            handlers=[
+            logging.StreamHandler()], # Output logs to the console
+              format='%(asctime)s -%(lineno)s - %(message)s')    
 #Implement Stack and queue python
 class myStack:
      def __init__(self):
