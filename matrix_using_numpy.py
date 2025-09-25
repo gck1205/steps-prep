@@ -16,5 +16,5 @@ In this case, 0 means along the rows (vertically).
 """
 
 #Delete Element
-arr2 = np.delete(arr2, [1], 1)
+arr2 = np.delete(arr2, [-1], 1)
 print("After deleting the last column:\n", arr2)
