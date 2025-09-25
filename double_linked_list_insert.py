@@ -16,6 +16,7 @@ def insertBegin(head, data):
     new_node = Node(data)
     new_node.next=head
     head.prev= new_node
+    
     return new_node
 
 def insert_end(head, data):
