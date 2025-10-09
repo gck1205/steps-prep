@@ -144,5 +144,5 @@ BQ vs SQL:
 
 onprem --> connectdirect jobs -->hive --> bq
 
-
+Cloud Run:
 
