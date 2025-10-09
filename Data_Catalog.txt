@@ -8,5 +8,17 @@ Linking of Technical metadata with --> Business metadata using Tags
     Add column details such as source,volume,has_pii, pii_type
 
 2) Apply policy on top of the tags/tag templates:
-    plocy tags can be applied at rge column level
+    policy tags can be applied at  column level
+  Taxonomies needs to be defined before applying policy tags
+  Eg:
+  Highly Confidential -- SSN
+
+  Medium Confidential - Address
+
+3) set IAM permissions based on policy tags
+
+4) Users without access cannot query restricted columns
+
+Taxonomy - its a container where you organise policy tags into a hierarchy
+In BQ table, under Edit Schema : Add policy Tag --> assigning as highly confidentail or Medium Confidential
     
