@@ -39,10 +39,6 @@ df.write().
 
 
 ==============
-
-This payment method can’t be used for recurring payments. Learn more [OR-ACH-01]
-
-This payment method can’t be used for recurring payments. Learn more [OR-ACH-01]
 =========================
 
 select * from qwiklabs-gcp-01-f56093fc4d92.`region-us`.INFORMATION_SCHEMA.TABLE_STORAGE
