@@ -39,7 +39,6 @@ df.write().
 
 
 ==============
-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
 
 This payment method can’t be used for recurring payments. Learn more [OR-ACH-01]
 
