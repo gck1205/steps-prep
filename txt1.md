@@ -101,3 +101,48 @@ from airflow.sensors.filesystem import FileSensor
 
 SLA
 within airflow,the amount of time a task or a DAG should require to run
+sla - argument on the task
+
+default_args = {
+  'start_date': datetime(2024, 1, 20),
+  'sla': timedelta(minutes=30)
+}
+
+Templates:
+Allow substitution info. during a dag run
+are created using jinja template format
+#########
+
+API Pagination:
+Normalization/DeNormalization:
+
+Clustered by/Partition by:
+
+PII tagging:
+
+IAM roles:
+####
+Dataflow & Dataproc:
+Service Model: Dataflow is serverless, while Dataproc involves managing clusters. 
+Programming Model: Dataflow uses Apache Beam for portable pipelines, whereas Dataproc runs jobs on traditional Hadoop/Spark clusters. 
+Scalability: Dataflow provides automatic scaling, while Dataproc requires manual cluster scaling. 
+Hadoop Dependence: Choose Dataproc if your application has existing dependencies on the Hadoop ecosystem; Dataflow abstracts away this dependency. 
+
+
+XML & json files:
+
+rdd
+df --> to hive
+
+json files:
+
+dataproc airflow operators:
+
+optimization techniques:
+
+BQ vs SQL:
+
+onprem --> connectdirect jobs -->hive --> bq
+
+
+

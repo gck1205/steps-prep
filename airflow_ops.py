@@ -159,3 +159,182 @@ generate_report_task = BashOperator(
 
 precheck >> generate_report_task
 ########
+
+
+# Import the timedelta object
+from datetime import timedelta
+
+# Create the dictionary entry
+default_args = {
+  'start_date': datetime(2024, 1, 20),
+  'sla': timedelta(minutes=30)
+}
+
+# Add to the DAG
+test_dag = DAG('test_workflow', default_args=default_args, schedule_interval=None)
+
+####
+# Import the timedelta object
+from datetime import timedelta
+
+test_dag = DAG('test_workflow', start_date=datetime(2024,1,20), schedule_interval=None)
+
+# Create the task with the SLA
+task1 = BashOperator(task_id='first_task',
+                     sla=timedelta(hours=3),
+                     bash_command='initialize_data.sh',
+                     dag=test_dag)
+
+
+# Define the email task
+email_report = EmailOperator(
+        task_id='email_report',
+        to='airflow@datacamp.com',
+        subject='Airflow Monthly Report',
+        html_content="""Attached is your monthly workflow report - please refer to it for more detail""",
+        files=['monthly_report.pdf'],
+        dag=report_dag
+)
+
+# Set the email task to run after the report is generated
+email_report << generate_report
+#########
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.sensors.filesystem import FileSensor
+from datetime import datetime
+
+default_args={
+    'email': ['airflowalerts@datacamp.com','airflowadmin@datacamp.com'],
+    'email_on_failure': True,
+    'email_on_success': True
+}
+
+report_dag = DAG(
+    dag_id = 'execute_report',
+    schedule_interval = "0 0 * * *",
+    default_args=default_args
+)
+
+precheck = FileSensor(
+    task_id='check_for_datafile',
+    filepath='salesdata_ready.csv',
+    start_date=datetime(2023,2,20),
+    mode='reschedule',
+    dag=report_dag)
+
+generate_report_task = BashOperator(
+    task_id='generate_report',
+    bash_command='generate_report.sh',
+    start_date=datetime(2023,2,20),
+    dag=report_dag
+)
+
+precheck >> generate_report_task
+##########
+
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
+default_args = {
+  'start_date': datetime(2023, 4, 15),
+}
+
+cleandata_dag = DAG('cleandata',
+                    default_args=default_args,
+                    schedule_interval='@daily')
+
+# Create a templated command to execute
+# 'bash cleandata.sh datestring'
+templated_command="""bash cleandata.sh {{ ds_nodash }} """
+
+# Modify clean_task to use the templated command
+clean_task = BashOperator(task_id='cleandata_task',
+                          bash_command=templated_command,
+                          dag=cleandata_dag)
+#####
+
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
+default_args = {
+  'start_date': datetime(2023, 4, 15),
+}
+
+cleandata_dag = DAG('cleandata',
+                    default_args=default_args,
+                    schedule_interval='@daily')
+
+# Modify the templated command to handle a
+# second argument called filename.
+templated_command = """
+  bash cleandata.sh {{ ds_nodash }} {{ params.filename }}
+"""
+
+# Modify clean_task to pass the new argument
+clean_task = BashOperator(task_id='cleandata_task',
+                          bash_command=templated_command,
+                          params={'filename': 'salesdata.txt'},
+                          dag=cleandata_dag)
+
+# Create a new BashOperator clean_task2
+clean_task2 = BashOperator(task_id='cleandata_task2',
+                           bash_command=templated_command,
+                          params={'filename': 'supportdata.txt'},
+                          dag=cleandata_dag)
+                           
+# Set the operator dependencies
+clean_task >> clean_task2
+
+##
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
+filelist = [f'file{x}.txt' for x in range(30)]
+
+default_args = {
+  'start_date': datetime(2020, 4, 15),
+}
+
+cleandata_dag = DAG('cleandata',
+                    default_args=default_args,
+                    schedule_interval='@daily')
+
+# Modify the template to handle multiple files in a 
+# single run.
+templated_command = """
+  <% for filename in params.filenames %>
+  bash cleandata.sh {{ ds_nodash }} {{ filename }};
+  <% endfor %>
+"""
+
+# Modify clean_task to use the templated command
+clean_task = BashOperator(task_id='cleandata_task',
+                          bash_command=templated_command,
+                          params={'filenames': filelist},
+                          dag=cleandata_dag)
+
+##########
+from airflow import DAG
+from airflow.operators.email import EmailOperator
+from datetime import datetime
+
+# Create the string representing the html email content
+html_email_str = """
+Date: {{ ds }}
+Username: {{ params.username }}
+"""
+
+email_dag = DAG('template_email_test',
+                default_args={'start_date': datetime(2023, 4, 15)},
+                schedule_interval='@weekly')
+                
+email_task = EmailOperator(task_id='email_task',
+                           to='testuser@datacamp.com',
+                           subject="{{ macros.uuid.uuid4() }}",
+                           html_content=html_email_str,
+                           params={'username': 'testemailuser'},
+                           dag=email_dag)
