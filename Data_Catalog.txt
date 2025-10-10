@@ -21,4 +21,42 @@ Linking of Technical metadata with --> Business metadata using Tags
 
 Taxonomy - its a container where you organise policy tags into a hierarchy
 In BQ table, under Edit Schema : Add policy Tag --> assigning as highly confidentail or Medium Confidential
-    
+
+Row level restriction -- policy
+
+ create row  access policy "mark_access" on demo.employ  grant to (<email>) filter using (department="Marketing").
+
+ This gives only rows from table where department="Marketing"
+ --------BQ Billing------
+Storage Pricing:
+
+ Logical --> actual data size without compression
+
+ Physical --> data is compressed and stored on disk
+
+ Billing type for a dataset can be checked by looking into parameter: storage_billing_parameter  -->where physical/Logical is selected 
+
+ Compute Pricing:
+
+ select * from demo.products limit 1 --> processes 18.75GB
+ select id,product  from demo.products --> processes 600MB   
+
+ Since BQ is a columnar db '*' should be avoided since it picks all columns data irrespective of limit 1 
+
+ OnDemand pricing:
+     charged per TB of data processed
+      automatic scaling
+
+ Flat rate pricing: 
+     purchase dedicated processing capacity known as slots at flat monthly rate     
+
+Federated Queries:
+ can connect from BQ to other sources such as Cloud SQL,Spanner,SAP(beta)
+ can connect using "external_query"
+
+ Bigdata Lake table:
+
+ select * from external_query("bigdata_lake","select * from employee")
+ bigdata table vs external table
+   when shared with other users --> cloud storage access needs to be given for external table whereas not required for bigdata lake table
+
