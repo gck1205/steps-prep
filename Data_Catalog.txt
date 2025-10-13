@@ -53,10 +53,24 @@ Storage Pricing:
 Federated Queries:
  can connect from BQ to other sources such as Cloud SQL,Spanner,SAP(beta)
  can connect using "external_query"
+select * from external_query("bigdata_lake","select * from employee")\
+ 
+ BigLake table:
+ access datasources and datawarehouses 
+ 
+ biglake table vs external table
+   when shared with other users --> cloud storage access needs to be given for external table whereas not required for biglake table
 
- Bigdata Lake table:
+Bigquery Omni -> used to query data from AWS S3/ Azure blob
 
- select * from external_query("bigdata_lake","select * from employee")
- bigdata table vs external table
-   when shared with other users --> cloud storage access needs to be given for external table whereas not required for bigdata lake table
+Partition table:
 
+create table orders_p partition by date(creation_date) cluster by (tags) as
+select * from orders where creation_date >= date('2020-01-01')
+
+#############################
+Ensuring high availability and disaster recovery in a cloud-based database system involves using techniques such as multi-region deployments, automated backups, and replication. 
+
+Multi-region deployments distribute data across different geographical locations to mitigate the impact of regional outages. Automated backups ensure that data can be restored to a previous state in case of failures. 
+
+Replication keeps multiple copies of data synchronized across different nodes, providing redundancy and enabling quick failover in case of primary node failure.
