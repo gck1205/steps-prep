@@ -117,3 +117,8 @@ such as pathname,filename,size.Similarly for BQ it crawls dataset,table,creation
 
 Index: allows catalog to perform search on the metadata 
 
+Dataplex propagates policies in the Dataplex Hierarchy (Lake=>Zone=>Asset) on an ongoing basis
+
+###
+DataLineage API:
+         Captures metadata about sources,targets,operations,process
