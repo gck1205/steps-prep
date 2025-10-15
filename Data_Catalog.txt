@@ -104,3 +104,16 @@ Data Governance Framework:
   Security & privacy regulations
   Data Retention, disposal ,access & usage   
   Integration, Interoperability & Stewardship
+
+
+  ###
+  Dataplex universal catalog
+  Dataplex Catalog
+
+  Discovery & Indexing are primary concepts associated with dataplex universal catalog.
+
+During Discovery process,dataplex when connected to Cloud Storage, Bigquery or Cloud SQL crawls the technical metadata
+such as pathname,filename,size.Similarly for BQ it crawls dataset,table,creation_time,size etc.
+
+Index: allows catalog to perform search on the metadata 
+
