@@ -74,3 +74,33 @@ Ensuring high availability and disaster recovery in a cloud-based database syste
 Multi-region deployments distribute data across different geographical locations to mitigate the impact of regional outages. Automated backups ensure that data can be restored to a previous state in case of failures. 
 
 Replication keeps multiple copies of data synchronized across different nodes, providing redundancy and enabling quick failover in case of primary node failure.
+
+#########$$$$$$$$$$$$$$$$$########################S
+Data Governance
+
+Data Quality:  if wrong address is present the orders cannot be delivered
+
+Data security: protect data from unauthorized action.
+               Includes measures like access_controls,encryption,regular backups
+
+Data Compliance: Adhere to GDPR,CCPA,HIPAA
+
+
+Data Ownership & accountability: 
+        Establish clear roles and responsibilities
+        Identify data owners who are responsible for data quality & security
+
+Data Standards & Policies:
+        Define & enforce consistent data definitions,formats & usage guidelines
+
+Data Governance Framework:
+    manage data thru entire lifecycle
+    ensure data is accurate,complete,consistent,timely & valid
+    protect data from unauthorized access
+    adhere to applicable laws
+
+  ###
+  Introduction & quality standards
+  Security & privacy regulations
+  Data Retention, disposal ,access & usage   
+  Integration, Interoperability & Stewardship
