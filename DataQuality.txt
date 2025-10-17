@@ -1,0 +1,16 @@
+Data Quality:
+         Data Quality tools in GCP
+
+
+ETL vs ELT:
+        ELT is used mainly to decouple from source systems
+
+
+Import Snapshot of the data to BQ:
+
+Authorized views:
+
+Policy Tags:
+
+Design BQ table for Customers table:
+

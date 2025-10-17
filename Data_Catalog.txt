@@ -1,5 +1,7 @@
 #
-Implementing data security involves encryption, access controls, user authentication, regular audits, and employing secure coding practices to protect data from unauthorized access and breaches.
+Implementing data security involves encryption, access controls, user authentication,
+ regular audits, and employing secure coding practices to protect data from 
+ unauthorized access and breaches.
 
 data catalogue:
 Linking of Technical metadata with --> Business metadata using Tags
@@ -69,11 +71,15 @@ create table orders_p partition by date(creation_date) cluster by (tags) as
 select * from orders where creation_date >= date('2020-01-01')
 
 #############################
-Ensuring high availability and disaster recovery in a cloud-based database system involves using techniques such as multi-region deployments, automated backups, and replication. 
+Ensuring high availability and disaster recovery in a cloud-based database system involves 
+using techniques such as multi-region deployments, automated backups, and replication. 
 
-Multi-region deployments distribute data across different geographical locations to mitigate the impact of regional outages. Automated backups ensure that data can be restored to a previous state in case of failures. 
+Multi-region deployments distribute data across different geographical locations to 
+mitigate the impact of regional outages. Automated backups ensure that data can be 
+restored to a previous state in case of failures. 
 
-Replication keeps multiple copies of data synchronized across different nodes, providing redundancy and enabling quick failover in case of primary node failure.
+Replication keeps multiple copies of data synchronized across different nodes, 
+providing redundancy and enabling quick failover in case of primary node failure.
 
 #########$$$$$$$$$$$$$$$$$########################S
 Data Governance
