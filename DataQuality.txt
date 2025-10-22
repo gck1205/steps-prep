@@ -5,7 +5,6 @@ Data Quality:
 ETL vs ELT:
         ELT is used mainly to decouple from source systems
 
-
 Import Snapshot of the data to BQ:
 
 Authorized views:
@@ -14,3 +13,34 @@ Policy Tags:
 
 Design BQ table for Customers table:
 
+arn:aws:iam::113421805413:role/service-role/AmazonRedshift-CommandsAccessRole-20251017T162817
+
+jdbc:redshift://default-workgroup.113421805413.us-east-1.redshift-serverless.amazonaws.com:5439/dev
+================================
+
+Pub/Sub is an asynchronous global messaging service. 
+
+There are three terms in Pub/Sub that appear often: topics, publishing, and subscribing.
+
+A topic is a shared string that allows applications to connect with one another through a common thread.
+
+Publishers push (or publish) a message to a Pub/Sub topic. 
+
+
+Subscribers will then make a subscription to that thread, 
+where they will either pull messages from the topic or configure webhooks for push subscriptions.
+ Every subscriber must acknowledge each message within a configurable window of time.
+
+In sum, a publisher creates and sends messages to a topic and a subscriber creates a subscription
+ to a topic to receive messages from it.
+
+Pub/Sub in Google CLoud
+Pub/Sub comes preinstalled in Cloud Shell, so there are no installations or configurations
+required to get started with this service. 
+In this lab you use Python to create the topic, subscriber, and then view the message. 
+You use a gcloud command to publish the message to the topic.
+
+--> To publish a Topic is must
+--> To subscribe a Topic is must
+
+https://github.com/googleapis/python-pubsub/blob/main/samples/snippets
