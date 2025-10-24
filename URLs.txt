@@ -16,3 +16,11 @@ gs://cloud-training/dataengineering/lab_assets/idegc/spark-bigquery_2.12-2022102
         --file=your-pyspark-script.py \
         --jars=gs://spark-lib/bigquery/spark-bigquery-with-dependencies_2.12-*.jar \
         --properties=spark.jars.packages=org.apache.spark:spark-avro_2.12:your-avro-version
+
+###############Delta lake vs Big Lake
+
+Delta Lake is an open-source storage layer that adds ACID transactions and 
+other performance and reliability features to the data, and it can be used with external tables
+
+BigLake is a Google Cloud storage engine that provides a unified, 
+managed view over data lakes and warehouses, offering fine-grained access control and high performance without requiring users to have direct access to the underlying storage
