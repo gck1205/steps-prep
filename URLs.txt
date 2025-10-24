@@ -17,10 +17,32 @@ gs://cloud-training/dataengineering/lab_assets/idegc/spark-bigquery_2.12-2022102
         --jars=gs://spark-lib/bigquery/spark-bigquery-with-dependencies_2.12-*.jar \
         --properties=spark.jars.packages=org.apache.spark:spark-avro_2.12:your-avro-version
 
+########
+Leveraging Jupyter notebooks to pull data from source systems to bigquery
+Jupyter lab for serverless batch and notebook sessions
+
 ###############Delta lake vs Big Lake
 
 Delta Lake is an open-source storage layer that adds ACID transactions and 
 other performance and reliability features to the data, and it can be used with external tables
 
 BigLake is a Google Cloud storage engine that provides a unified, 
-managed view over data lakes and warehouses, offering fine-grained access control and high performance without requiring users to have direct access to the underlying storage
+managed view over data lakes and warehouses, offering fine-grained access control and 
+high performance without requiring users to have direct access to the underlying storage
+
+
+Iceberg is an open source table format that supports petabyte scale data tables. 
+The Iceberg open specification lets you run multiple query engines on a single copy of data stored
+in an object store. Apache Iceberg external tables (hereafter called Iceberg external tables) 
+support Iceberg specification version 2, including merge-on-read.
+
+CREATE EXTERNAL TABLE myexternal-table
+  WITH CONNECTION `myproject.us.myconnection`
+  OPTIONS (
+         format = 'ICEBERG',
+         uris = ["gs://mybucket/mydata/mytable/metadata/iceberg.metadata.json"]
+   )
+
+################### Use dataframes in dbt##########
+
+dataframes can be used in dbt
