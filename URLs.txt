@@ -1,0 +1,18 @@
+##Apach Spark Code
+https://storage.googleapis.com/cloud-training/dataengineering/lab_assets/idegc/dataproc-templates.zip
+
+Avro file download:
+
+wget https://storage.googleapis.com/cloud-training/dataengineering/lab_assets/idegc/campaigns.avro
+#################
+Spark Bigquery jar:
+
+gs://cloud-training/dataengineering/lab_assets/idegc/spark-bigquery_2.12-20221021-2134.jar
+################
+  gcloud dataproc serverless batches submit pyspark \
+        --project=your-gcp-project \
+        --region=your-gcp-region \
+        --batch=your-batch-name \
+        --file=your-pyspark-script.py \
+        --jars=gs://spark-lib/bigquery/spark-bigquery-with-dependencies_2.12-*.jar \
+        --properties=spark.jars.packages=org.apache.spark:spark-avro_2.12:your-avro-version
