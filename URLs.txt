@@ -50,3 +50,106 @@ dataframes can be used in dbt
 Datastream API 
 
 Datastream helps in replication(CDC) of data from one system salesforce to BigQuery
+
+##########
+BQ Security:
+
+Control Access with IAM
+Control Access with Authorization
+Restrict network access
+Control Column and row access
+Protect Sensitive data 
+  --Data Policy
+     roles/bigquerydatapolicy.admin
+     CREATE[ OR REPLACE] DATA_POLICY [IF NOT EXISTS] `myproject.region-us.data_policy_name`
+    OPTIONS (
+      data_policy_type="DATA_MASKING_POLICY",
+      masking_expression="ALWAYS_NULL"
+    );
+
+        GRANT FINE_GRAINED_READ ON DATA_POLICY `myproject.region-us.data_policy_name`
+    TO "principal://goog/subject/user1@example.com","principal://goog/subject/user2@example.com";
+
+    DROP DATA_POLICY `myproject.region-us.data_policy_name`; 
+
+     CREATE TABLE myproject.table1 (
+    name INT64 OPTIONS (data_policies=["{'name':'myproject.region-us.data_policy_name1'}",
+                                      "{'name':'myproject.region-us.data_policy_name2'}"])
+    );
+ --------------------------------------------------------------------
+    You can't apply both policy tags and data policies to the same column.
+ ------------------------------------------------------
+Manage encryption
+----------------------
+AEAD.ENCRYPT(
+  KEYS.KEYSET_CHAIN(kms_resource_name, first_level_keyset),
+  plaintext,
+  additional_authenticated_data)
+------------------
+
+AEAD.DECRYPT_STRING(
+  KEYS.KEYSET_CHAIN(kms_resource_name, first_level_keyset),
+  ciphertext,
+  additional_authenticated_data)
+
+
+
+----------------------------
+############
+Load Data
+############
+
+LOAD DATA INTO ticket_sales.categories
+(
+  catid INT64 NOT NULL,
+  catgroup STRING,
+  catname STRING,
+  catdesc STRING)
+FROM FILES (
+  format = 'CSV', 
+  field_delimiter = ',',
+  max_bad_records = 10,
+  uris = ['gs://cloud-training/bigquery-demos/ticket-sales/categories.csv']);
+
+  ####Partition By###############
+  CREATE OR REPLACE TABLE
+  ticket_sales.sales_partitioned_by_date
+PARTITION BY
+  DATETIME_TRUNC(saletime, DAY)
+AS (
+  SELECT
+    * except (saletime), 
+    PARSE_DATETIME( "%m/%d/%Y %H:%M:%S", saletime) as saletime
+  FROM
+    ticket_sales.sales );
+######  ARRAY_AGG ##############
+SELECT
+  e.eventid,
+  e.eventname,
+  ARRAY_AGG(STRUCT(
+  s.saletime,
+  s.qtysold,
+  s.pricepaid,
+  s.commission)) as sales
+FROM
+  ticket_sales.events e
+JOIN
+  ticket_sales.sales s
+  on
+  e.eventid = s.eventid
+GROUP BY eventid, eventname
+ORDER BY eventid, eventname;
+#########  UNNEST ###########
+
+the UNNEST function is used to flatten the sales array. 
+Then, it can be queried and those results are converted into an array.
+######
+
+SELECT
+  eventid,
+  eventname,
+  ARRAY((SELECT AS STRUCT saletime, commission FROM UNNEST(sales)
+   ORDER BY(commission) DESC LIMIT 2)) as top_2
+FROM
+  ticket_sales.event_sales
+ORDER BY eventid;
