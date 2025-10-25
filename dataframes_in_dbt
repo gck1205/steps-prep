@@ -73,3 +73,21 @@ models:
     return bdf
 
     #############
+
+from google.cloud import bigquery
+client = bigquery.Client(project=PROJECT_ID)
+dataset = bigquery.Dataset(PROJECT_ID + "." + DATASET_ID)
+dataset.location = REGION
+dataset = client.create_dataset(dataset, exists_ok=True)
+print(f"Dataset {dataset.dataset_id} created.")
+########################
+use the to_gbq method to create a BigQuery table from the DataFrame:
+##############
+df_from_local.to_gbq(
+    f"{PROJECT_ID}.{DATASET_ID}.penguins",
+    if_exists="replace",
+)
+#######
+query_or_table = f"{PROJECT_ID}.{DATASET_ID}.penguins"
+bq_df = bpd.read_gbq(query_or_table)
+bq_df.peek()

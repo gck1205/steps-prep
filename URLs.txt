@@ -30,7 +30,6 @@ BigLake is a Google Cloud storage engine that provides a unified,
 managed view over data lakes and warehouses, offering fine-grained access control and 
 high performance without requiring users to have direct access to the underlying storage
 
-
 Iceberg is an open source table format that supports petabyte scale data tables. 
 The Iceberg open specification lets you run multiple query engines on a single copy of data stored
 in an object store. Apache Iceberg external tables (hereafter called Iceberg external tables) 
@@ -46,3 +45,8 @@ CREATE EXTERNAL TABLE myexternal-table
 ################### Use dataframes in dbt##########
 
 dataframes can be used in dbt
+#########
+
+Datastream API 
+
+Datastream helps in replication(CDC) of data from one system salesforce to BigQuery
