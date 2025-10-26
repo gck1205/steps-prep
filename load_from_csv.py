@@ -8,6 +8,10 @@ table_id = "exm"
 table_ref = f"{project_id}.{dataset_id}.{table_id}"
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.CSV,
+    #  source_format=bigquery.SourceFormat.ORC,
+    #  source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
+    #  source_format=bigquery.SourceFormat.PARQUET,
+    #  source_format=bigquery.SourceFormat.AVRO
     skip_leading_rows=1,
     autodetect=True,  # Or provide a schema
 )
