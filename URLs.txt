@@ -1,3 +1,23 @@
+##Composer 
+https://github.com/GoogleCloudPlatform/python-docs-samples/blob/16de3b44f1a9faeccca5bc1cd8a719afc104dc65/composer/workflows/bq_copy_across_locations.py
+==============================================================
+gcloud composer environments run composer-advanced-lab \
+--location europe-west1 variables -- \
+set table_list_file_path /home/airflow/gcs/dags/bq_copy_eu_to_us_sample.csv
+
+gcloud composer environments run composer-advanced-lab \
+--location europe-west1 variables -- \
+set gcs_source_bucket {UNIQUE ID}-us
+
+gcloud composer environments run composer-advanced-lab \
+--location europe-west1 variables -- \
+set gcs_dest_bucket {UNIQUE_ID}-eu
+------------------------------------------
+gcloud composer environments run composer-advanced-lab \
+    --location europe-west1 variables -- \
+    get gcs_source_bucket
+======================================
+
 ##Apach Spark Code
 https://storage.googleapis.com/cloud-training/dataengineering/lab_assets/idegc/dataproc-templates.zip
 
