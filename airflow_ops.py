@@ -1,3 +1,6 @@
+#call one dag from another dag in airflow
+
+
 # Define a second operator to run the `consolidate_data.sh` script
 consolidate = BashOperator(
     task_id='consolidate_task',
