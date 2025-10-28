@@ -1,6 +1,29 @@
 Data Quality:
-         Data Quality tools in GCP
+         Data Quality tools in GCP - Dataplex
 
+Data profiling should be run first inorder to get metrics such as
+1) Null percentage
+2) Unique percentage
+3) Metrics such as 
+   average length
+   max length
+   min length for strings
+   
+   average
+   max
+   min
+   std deviation
+   lower quartile
+   median quartile for Integer
+
+
+Data Quality:
+     dataquality scan :
+     null check 
+     row condition check 
+     uniqueness check
+     
+    
 
 ETL vs ELT:
         ELT is used mainly to decouple from source systems
