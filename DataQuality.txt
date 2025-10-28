@@ -1,3 +1,4 @@
+#########################
 Data Quality:
          Data Quality tools in GCP - Dataplex
 
@@ -16,14 +17,15 @@ Data profiling should be run first inorder to get metrics such as
    lower quartile
    median quartile for Integer
 
-
+#################################
 Data Quality:
      dataquality scan :
      null check 
      row condition check 
      uniqueness check
      
-    
+###############################    
+
 
 ETL vs ELT:
         ELT is used mainly to decouple from source systems
