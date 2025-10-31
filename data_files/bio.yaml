@@ -1,0 +1,61 @@
+# This is a sample YAML file
+# It demonstrates various data types and structures
+
+# Basic key-value pairs
+name: John Doe
+age: 30
+isStudent: false
+height: 1.75 # floating-point number
+
+# Lists (sequences)
+skills:
+  - Python
+  - Java
+  - YAML
+  - JavaScript
+
+# Nested dictionaries (mappings)
+address:
+  street: 123 Main St
+  city: Anytown
+  zipCode: "12345" # String value for zip code
+
+# Multi-line string (literal block style)
+bio: |
+  John is a passionate software developer
+  with experience in various programming languages.
+  He enjoys learning new technologies.
+
+# Multi-line string (folded block style)
+description: >
+  This is a folded block style string.
+  Multiple lines are folded into a single line
+  when parsed, with newlines replaced by spaces.
+
+# Another list of dictionaries
+projects:
+  - title: Project Alpha
+    status: In Progress
+    technologies:
+      - Python
+      - Django
+  - title: Project Beta
+    status: Completed
+    technologies:
+      - Java
+      - Spring Boot
+
+# Anchors and aliases for reusability
+default_settings: &default_settings
+  timeout: 60
+  retries: 3
+
+server_config:
+  <<: *default_settings # Use the default settings
+  port: 8080
+  host: localhost
+
+database_config:
+  <<: *default_settings # Use the default settings
+  type: PostgreSQL
+  username: admin
