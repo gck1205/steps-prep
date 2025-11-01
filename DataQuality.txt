@@ -24,7 +24,274 @@ Data Quality:
      row condition check 
      uniqueness check
      
-###############################    
+###############################  
+Dataquality config YAML file:
+
+rules:
+- nonNullExpectation: {}
+  column: id
+  dimension: COMPLETENESS
+  threshold: 1
+- regexExpectation:
+    regex: '^[^@]+[@]{1}[^@]+$'
+  column: email
+  dimension: CONFORMANCE
+  ignoreNull: true
+  threshold: .85
+postScanActions:
+  bigqueryExport:
+    resultsTable: projects/qwiklabs-gcp-00-798715df81a4/datasets/customers_dq_dataset/tables/dq_results
+#####################
+gcloud dataplex datascans create data-quality customer-orders-data-quality-job \
+    --project=qwiklabs-gcp-00-798715df81a4 \
+    --location=us-central1 \
+    --data-source-resource="//bigquery.googleapis.com/projects/qwiklabs-gcp-00-798715df81a4/datasets/customers/tables/contact_info" \
+    --data-quality-spec-file="gs://qwiklabs-gcp-00-798715df81a4-bucket/dq-customer-raw-data.yaml"
+#######################################
+Field name
+Type
+Mode
+Description
+Key
+Collation
+Default Value
+Policy Tags 
+Data Policies
+Load more
+project_id
+STRING	NULLABLE	
+The project id of the data scan.
+-	-	-	
+-	
+-
+location
+STRING	NULLABLE	
+The location of the data scan.
+-	-	-	
+-	
+-
+data_scan_id
+STRING	NULLABLE	
+The data scan id.
+-	-	-	
+-	
+-
+display_name
+STRING	NULLABLE	
+The display name of the data scan.
+-	-	-	
+-	
+-
+data_source
+RECORD	NULLABLE	
+The data source of the data scan.
+-	-	-	
+-	
+-
+resource_name
+STRING	NULLABLE	
+The full resource name of the data source.
+-	-	-	
+-	
+-
+dataplex_entity_project_id
+STRING	NULLABLE	
+Data source - the project id of the source dataplex entity.
+-	-	-	
+-	
+-
+dataplex_entity_project_number
+INTEGER	NULLABLE	
+Data source - the project number of the source dataplex entity.
+-	-	-	
+-	
+-
+dataplex_lake_id
+STRING	NULLABLE	
+Data source - the lake id of the source dataplex entity.
+-	-	-	
+-	
+-
+dataplex_zone_id
+STRING	NULLABLE	
+Data source - the zone id of the source dataplex entity.
+-	-	-	
+-	
+-
+dataplex_entity_id
+STRING	NULLABLE	
+Data source - the entity id of the source dataplex entity.
+-	-	-	
+-	
+-
+table_project_id
+STRING	NULLABLE	
+Data source - the project id of the source BigQuery table.
+-	-	-	
+-	
+-
+table_project_number
+INTEGER	NULLABLE	
+Data source - the project number of the source BigQuery table.
+-	-	-	
+-	
+-
+dataset_id
+STRING	NULLABLE	
+Data source - the dataset id of the source BigQuery table.
+-	-	-	
+-	
+-
+table_id
+STRING	NULLABLE	
+Data source - the table id of the source BigQuery table.
+-	-	-	
+-	
+-
+data_quality_job_id
+STRING	NULLABLE	
+Data quality scan job id.
+-	-	-	
+-	
+-
+data_quality_job_configuration
+JSON	NULLABLE	
+Data quality job configuration.
+-	-	-	
+-	
+-
+job_labels
+JSON	NULLABLE	
+The data scan job labels.
+-	-	-	
+-	
+-
+job_start_time
+TIMESTAMP	NULLABLE	
+The start time of the data scan job.
+-	-	-	
+-	
+-
+job_end_time
+TIMESTAMP	NULLABLE	
+The end time of the data scan job.
+-	-	-	
+-	
+-
+job_quality_result
+RECORD	NULLABLE	
+The overall result of the data quality job.
+-	-	-	
+-	
+-
+job_dimension_result
+JSON	NULLABLE	
+The dimension result of the data quality job.
+-	-	-	
+-	
+-
+job_rows_scanned
+INTEGER	NULLABLE	
+The number of rows that have been scanned during this data scan job.
+-	-	-	
+-	
+-
+rule_name
+STRING	NULLABLE	
+Data quality rule name.
+-	-	-	
+-	
+-
+rule_description
+STRING	NULLABLE	
+Data quality rule description.
+-	-	-	
+-	
+-
+rule_type
+STRING	NULLABLE	
+Data quality rule type.
+-	-	-	
+-	
+-
+rule_evaluation_type
+STRING	NULLABLE	
+Data quality rule evaluation type.
+-	-	-	
+-	
+-
+rule_column
+STRING	NULLABLE	
+The column name in the source table of the rule runs against.
+-	-	-	
+-	
+-
+rule_dimension
+STRING	NULLABLE	
+Data quality rule dimension.
+-	-	-	
+-	
+-
+rule_threshold_percent
+FLOAT	NULLABLE	
+The minimum percent of passed rows required to pass this rule.
+-	-	-	
+-	
+-
+rule_parameters
+JSON	NULLABLE	
+Data quality rule parameters.
+-	-	-	
+-	
+-
+rule_passed
+BOOLEAN	NULLABLE	
+The result of whether this rule has passed.
+-	-	-	
+-	
+-
+rule_rows_evaluated
+INTEGER	NULLABLE	
+The number of rows that have been evaluated for this rule
+-	-	-	
+-	
+-
+rule_rows_passed
+INTEGER	NULLABLE	
+The number of rows that have passed for this rule.
+-	-	-	
+-	
+-
+rule_rows_passed_percent
+FLOAT	NULLABLE	
+The percentage of rows that have passed for this rule.
+-	-	-	
+-	
+-
+rule_rows_null
+INTEGER	NULLABLE	
+The number of rows with null values for this rule.
+-	-	-	
+-	
+-
+rule_failed_records_query
+STRING	NULLABLE	
+The failed records query of this rule.
+-	-	-	
+-	
+-
+created_on
+TIMESTAMP	NULLABLE	
+The creation time of the data scan.
+-	-	-	
+-	
+-
+last_updated
+TIMESTAMP	NULLABLE	
+The last updated time of the data scan.
+-	-	-	
+-	
+-
 
 
 ETL vs ELT:
