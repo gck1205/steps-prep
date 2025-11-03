@@ -17,7 +17,12 @@ gcloud composer environments run composer-advanced-lab \
     --location europe-west1 variables -- \
     get gcs_source_bucket
 ======================================
-
+##########
+DummyOperator: Creates Start and End dummy tasks for better visual representation of the DAG.
+BigQueryToCloudStorageOperator: Exports BigQuery tables to Cloud Storage buckets using Avro format.
+GoogleCloudStorageToGoogleCloudStorageOperator: Copies files across Cloud Storage buckets.
+GoogleCloudStorageToBigQueryOperator: Imports tables from Avro files in Cloud Storage bucket.
+###########
 ##Apach Spark Code
 https://storage.googleapis.com/cloud-training/dataengineering/lab_assets/idegc/dataproc-templates.zip
 
