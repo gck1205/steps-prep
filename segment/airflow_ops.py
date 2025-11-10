@@ -1,5 +1,5 @@
 #call one dag from another dag in airflow
-
+#pass dataframe values from one task to other task 
 
 # Define a second operator to run the `consolidate_data.sh` script
 consolidate = BashOperator(

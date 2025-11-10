@@ -104,6 +104,7 @@ Data Governance Framework:
     ensure data is accurate,complete,consistent,timely & valid
     protect data from unauthorized access
     adhere to applicable laws
+    
 
   ###
   Introduction & quality standards
@@ -118,7 +119,8 @@ Data Governance Framework:
 
   Discovery & Indexing are primary concepts associated with dataplex universal catalog.
 
-During Discovery process,dataplex when connected to Cloud Storage, Bigquery or Cloud SQL crawls the technical metadata
+During Discovery process,dataplex when connecte to Cloud Storage, Bigquery or Cloud SQL crawls the
+technical metadata
 such as pathname,filename,size.Similarly for BQ it crawls dataset,table,creation_time,size etc.
 
 Index: allows catalog to perform search on the metadata 
