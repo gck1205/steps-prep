@@ -1,0 +1,59 @@
+########------------------------------
+#              Install apache-flink modules
+#              pip install apache-flink==1.20.0
+
+# pip install testresources pytz>=2020.1 cloudpickle==2.2.1 "protobuf>=3.20.3,<4.24.0" "pyarrow<12.0.0,>=3.0.0"
+
+#####++++++++++++++++++++++++++++++++++++++++++++++++++
+from pyflink.table import EnvironmentSettings, TableEnvironment, TableDescriptor, Schema, DataTypes
+
+settings = EnvironmentSettings.in_batch_mode()
+
+tenv = TableEnvironment.create(settings)
+
+#####-----------------------------------------------
+from pyflink.common import Row
+from pyflink.table import (EnvironmentSettings, TableEnvironment, TableDescriptor, Schema,
+                           DataTypes, FormatDescriptor,CsvTableSource)
+from pyflink.table.expressions import lit, col
+
+from pyflink.table.expressions import *
+from pyflink.table.udf import udtf, udf, udaf, AggregateFunction, TableAggregateFunction, udtaf
+from pyflink.table import DataTypes
+
+##########--------------------------
+
+import pyflink
+from pyflink.common import WatermarkStrategy, Encoder, Types
+from pyflink.datastream import StreamExecutionEnvironment, RuntimeExecutionMode
+from pyflink.datastream.connectors.file_system import (FileSource, StreamFormat, FileSink,
+                                                       OutputFileConfig, RollingPolicy)
+
+env = StreamExecutionEnvironment.get_execution_environment()
+env.set_runtime_mode(RuntimeExecutionMode.BATCH)
+ 
+ds = env.from_source(source=FileSource.for_record_stream_format(StreamFormat.text_line_format(),
+                                                                "file:///home/ubuntu/superstore/orders.csv").process_static_file_set().build(),
+            watermark_strategy=WatermarkStrategy.for_monotonous_timestamps(),
+            source_name="file_source")           
+#ds_f=ds.filter(lambda line: line != 'RowID,OrderID,OrderDate,ShipDate,ShipMode,CustomerID,ProductID,Sales,Quantity,Discount,Profit')
+            
+ds_split = ds.map(lambda data: data.split(","))
+ds_split.print()
+env.execute()
+
+ds_with_schema= ds_split.map(lambda ds_split: (ds_split[0], ds_split[1],ds_split[2],ds_split[3],ds_split[4],ds_split[5],ds_split[6],ds_split[7],ds_split[8],ds_split[9],ds_split[10]), output_type=Types.TUPLE([Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING(),Types.STRING()]))
+
+ds_with_schema.print()
+env.execute()
+
+ds_with_schema=ds_with_schema.filter(lambda ds_with_schema: ds_with_schema[7]!="Sales")
+
+ds_shipmode_sales=ds_with_schema.map(lambda ds_with_schema: (ds_with_schema[4],float(ds_with_schema[7])),output_type=Types.TUPLE([Types.STRING(), Types.FLOAT()]))
+ds_shipmode_sales.print()
+env.execute()
+
+ds_total_sales=ds_shipmode_sales.key_by(lambda ds_shipmode_sales: ds_shipmode_sales[0]).reduce(lambda i, j: (i[0], i[1] + j[1]))
+
+ds_total_sales.print()
+env.execute()
