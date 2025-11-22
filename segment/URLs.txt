@@ -179,7 +179,7 @@ FROM
   ticket_sales.event_sales
 ORDER BY eventid;
 
-=================
+=========================================
 SELECT
 event.event_date,
 event_name,
