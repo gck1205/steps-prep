@@ -34,7 +34,7 @@ Spark Bigquery jar:
 
 gs://cloud-training/dataengineering/lab_assets/idegc/spark-bigquery_2.12-20221021-2134.jar
 ################
-  gcloud dataproc serverless batches submit pyspark \
+gcloud dataproc serverless batches submit pyspark \
         --project=your-gcp-project \
         --region=your-gcp-region \
         --batch=your-batch-name \
