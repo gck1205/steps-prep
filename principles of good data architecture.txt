@@ -1,0 +1,19 @@
+
+ The AWS Well-Architected Framework consists of six pillars:
+ 
+ Operational excellence
+ Security
+ Reliability
+ Performance efficiency
+ Cost optimization
+ Sustainability
+ =====================
+ Google Cloud’s Five Principles for Cloud-Native Architecture are as follows:
+
+Design for automation.
+Be smart with state.
+Favor managed services.
+Practice defense in depth.
+Always be architecting.
+------------------------
+
