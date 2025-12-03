@@ -23,7 +23,7 @@ Linking of Technical metadata with --> Business metadata using Tags
 
 Taxonomy - its a container where you organise policy tags into a hierarchy
 In BQ table, under Edit Schema : Add policy Tag --> assigning as highly confidentail or Medium Confidential
-
+----------------------------------------------------------------------------------------
 Row level restriction -- policy
 
  create row  access policy "mark_access" on demo.employ  grant to (<email>) filter using (department="Marketing").
@@ -51,12 +51,12 @@ Storage Pricing:
 
  Flat rate pricing: 
      purchase dedicated processing capacity known as slots at flat monthly rate     
-
+----Federated Queries-------------------------------------------------------------
 Federated Queries:
  can connect from BQ to other sources such as Cloud SQL,Spanner,SAP(beta)
  can connect using "external_query"
 select * from external_query("bigdata_lake","select * from employee")\
- 
+------------------------------------- 
  BigLake table:
  access datasources and datawarehouses 
  
@@ -64,13 +64,14 @@ select * from external_query("bigdata_lake","select * from employee")\
    when shared with other users --> cloud storage access needs to be given for external table whereas not required for biglake table
 
 Bigquery Omni -> used to query data from AWS S3/ Azure blob
-
+------------------------------------------------
 Partition table:
 
 create table orders_p partition by date(creation_date) cluster by (tags) as
 select * from orders where creation_date >= date('2020-01-01')
 
 #############################
+-------High Availability----------------------
 Ensuring high availability and disaster recovery in a cloud-based database system involves 
 using techniques such as multi-region deployments, automated backups, and replication. 
 

@@ -1,3 +1,18 @@
+Data Mesh
+Data Mesh and Data Lake are distinct approaches to managing and organizing data within an organization.
+
+A data lake centralizes raw, unstructured data in a single repository for flexible storage and analysis.
+A data mesh decentralizes data ownership, aligning it with domain teams for better scalability and governance.
+
+
+Python dask
+
+Python polar
+
+
+
+
+
 Emp	Dept	Salary
 1	1	300
 2	1	500

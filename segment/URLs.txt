@@ -66,7 +66,24 @@ CREATE EXTERNAL TABLE myexternal-table
          format = 'ICEBERG',
          uris = ["gs://mybucket/mydata/mytable/metadata/iceberg.metadata.json"]
    )
+------------------Both Delta Lake & Iceberg supports the following
+ACID
+Time travel
+Schema Evolution
+Scalable metadata Handling
+-----------
+Delta Lake : uses transaction logs to ensure that only validated changes are committed to the table
+            and provides reliability in data updates.
+Iceberg: Utilizes manifest files, manifest lists, and metadata files
 
+Delta Lake: Only support Parquet
+Iceberg: Supports Parquet,AVRO,ORC
+
+Delta Lake: high performance through its Delta Engine, auto compaction, and indexing capabilities.
+Iceberg: partitioning and compaction
+
+
+https://www.datacamp.com/blog/iceberg-vs-delta-lake
 ################### Use dataframes in dbt##########
 
 dataframes can be used in dbt
