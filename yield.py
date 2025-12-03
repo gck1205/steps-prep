@@ -11,7 +11,7 @@ LINES = [
  
 class PrintToConsoleFn(beam.DoFn):
         def process(self, element):
-            # print(element)
+            print(element)
             yield element
  
 class ExtractPaymentTypeFn(beam.DoFn):
@@ -22,7 +22,7 @@ class ExtractPaymentTypeFn(beam.DoFn):
 with beam.Pipeline() as p:
             (p
                 | "ReadData" >> beam.Create(LINES)
-                | "PrintLines" >> beam.ParDo(PrintToConsoleFn())
-                # | "ExtractPaymentType" >> beam.ParDo(ExtractPaymentTypeFn())
-                # | "PrintPaymentType" >> beam.ParDo(PrintToConsoleFn())
-        )
+                # | "PrintLines" >> beam.ParDo(PrintToConsoleFn())
+                | "ExtractPaymentType" >> beam.ParDo(ExtractPaymentTypeFn())
+                | "PrintPaymentType" >> beam.ParDo(PrintToConsoleFn())
+            )

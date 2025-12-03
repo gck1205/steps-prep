@@ -1,0 +1,87 @@
+HAT IS PROMETHEUS?
+ 
+it is an opensource monitoring toolas well as alerting tool which help us to collect, store and query ,which we collect metrics based on time series database
+ 
+it is best at monitoring containers, nodes, applications
+ 
+it follows a pull based monitoring model,
+ 
+Target
+ 
+these are the actuall systems which you want to monitor
+ 
+targets do not send metrics default , they expose metrics over an HTTP endpoint
+ 
+http://host:port/metrics
+ 
+they only expose never store or alert
+ 
+ 
+2. EXPORTER:
+ 
+it collects the metrics from the target systems
+ 
+and convert them into Prometheus readable metrics
+ 
+expose them
+ 
+3. Prometheus server
+ 
+it is responsible for
+ 
+discovering targets
+ 
+scraping metrics
+ 
+storing time-series data
+ 
+querying data PromQL
+ 
+Trigger alerts
+ 
+4. Time series database
+ 
+Prometheus store data as a time series
+ 
+time series = metricname+labels+timestamp+value
+ 
+http_requests_total{method=GET, status="200"} 1240@170000000000
+ 
+5. PROMQL:
+ 
+QUERY METRICS
+ 
+CPU_USAGE_SCONDS_TOTAL
+ 
+6. ALERT MANAGER
+ 
+IT HANDLES THE ALERTS GENRATED BY PROMETEHUS
+ 
+group related alerts
+ 
+route alerts
+ 
+send notifications
+ 
+7. Grafana
+ 
+dashboards
+ 
+graphs
+ 
+heatmaps
+ 
+alert viulaization
+ 
+ 
+Benefits:
+ 
+opensource
+ 
+2. system monitoring
+ 
+3. alert generating
+ 
+4. easy to integrate with other tools
+ 
+5. easy to configure for different monitoring tasks
