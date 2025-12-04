@@ -8,7 +8,8 @@
  Cost optimization
  Sustainability
  =====================
- Google Cloud’s Five Principles for Cloud-Native Architecture are as follows:
+
+Google Cloud’s Five Principles for Cloud-Native Architecture are as follows:
 
 Design for automation.
 Be smart with state.
@@ -17,3 +18,25 @@ Practice defense in depth.
 Always be architecting.
 ------------------------
 
+Distributed Systems, Scalability, and Designing for Failure
+
+---------------------------------------------
+Brown field implementation  - Migrate existing architecture - refactoring and reorganizing an existing architecture
+                            - Brownfield projects require a thorough understanding of the legacy 
+                              architecture and the interplay of various old and new technologies. 
+Green field implementation  - Build new Systems
+---------------------
+The data mesh
+ attempts to invert the challenges of centralized data architecture, taking the concepts
+ of domain-driven design (commonly used in software architectures) and applying
+ them to data architecture. 
+ ----------------------
+ Lamda Architecture:
+
+  In a Lambda architecture, you have systems operating independently of
+ each other—batch, streaming, and serving. 
+ -----------------
+ Kappa Architecture:
+ Real-time
+ and batch processing can be applied seamlessly to the same data by reading the live
+ event stream directly and replaying large chunks of data for batch processing.
