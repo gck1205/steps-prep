@@ -1,0 +1,53 @@
+Scenario Question 1 — GroupByKey + CombinePerKey + Remove CSV Header + Write Output File
+📘 Background:
+
+You receive a daily sales CSV file from a retail system.
+
+Input CSV file: sales.csv(add 25 more values)
+Branch,SaleAmount
+Chennai,200
+Chennai,300
+Bangalore,150
+Chennai,100
+Bangalore,300
+
+
+The first line is a header — you must remove it before processing.
+
+Objective:
+
+Management wants total sales per branch for the entire day.
+
+To do this, you must use two Beam transformations:
+
+1️⃣ GroupByKey
+
+Group all sales for each branch.
+
+2️⃣ CombinePerKey(sum)
+
+Calculate total sales per branch.
+
+You must also:
+
+✔ Remove the CSV header
+✔ Parse each CSV line
+✔ Write the final output to a file named total_sales.txt
+
+Practical Question:
+
+Create an Apache Beam pipeline that:
+
+Reads sales.csv
+
+Removes the header row
+
+Converts each CSV line into (branch, amount) pairs
+
+Uses GroupByKey to collect sales of each branch
+
+Uses CombinePerKey(sum) to compute total sales
+
+Writes the final output to a text file total_sales.txt
+
+
