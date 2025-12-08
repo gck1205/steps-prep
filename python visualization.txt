@@ -1,0 +1,95 @@
+This course will help participants understand the concept below.   
+• Introduction to SciPy
+• Features of Scipy
+• SciPy Sub-modules
+• Installation
+• Basic functions
+• SciPy - Constants
+• SciPy - Statistics
+
+Numpy: 
+
+• Introduction to NumPy
+• Features of NumPy
+• SciPy versus NumPy
+• NumPy Demo
+• NDimensional array
+• Single, Two dimensional array
+• Installation
+• NumPy with List Comparison
+• NumPy Operations
+• Arithmetic operations using NumPy
+• Numpy Demo
+• Statistical function
+• Dot Product in Python using Numpy
+• Numpy string operations
+• Sorting, Searching and Counting
+• Matrix multiplication
+• Financial Functions
+• Matrix library  (Need to check )
+
+Day2:
+
+Pandas:
+
+• Introduction to Pandas
+• Features of Pandas
+• Data Analysis using Pandas
+• Creating DataFrame
+• Using NumPy in Pandas
+• Pandas basic Operations
+• Using list, using arrays, using Dictionary
+• Slicing, Creating indexed DataFrame using arrays
+• Reading and writing Pandas Data Frame  to csv /Excel file
+• Slicing in Pandas : To print column/Row wise data
+• Handling  Null  values in Pandas
+• Print few columns as a Dictionary
+• Print Row wise data
+• Print multiple rows from dataframe using Slicing
+• Delete operations on Rows and Columns
+• To drop single and Multiple Columns
+• To display static summary of DataFrame
+• Transpose of DataFrame
+• Sorting in Pandas
+• Passing condition in Pandas dataFrame
+• GroupBy
+• Statistical functions
+• Date functionality
+• Styling
+Join operation
+Pandas Query’s 
+
+Web Scraping  
+
+• What is Web Scraping.
+• Need for Web Scraping
+• Library’s for web Scraping in Python
+• Web Scraping API in Python
+• Installing Scrapy on window
+• Web crawler in Python
+• What is Spider
+• Scrapy API for HTML parsing.
+
+Day3:
+NLTK (Natural Language Toolkit )
+• What is Natural Language Processing
+• What is NLTK?
+• How to Download & Install NLTK on Windows
+• Accessing Text Corpora and Lexical Resources.
+• Processing Raw Text.
+• Writing Structured Programs.
+• Categorizing and Tagging Words
+• Learning to Classify Text.
+• Extracting Information from Text.
+• Analyzing Sentence Structure.
+• Building Feature Based Grammars.
+• Analyzing the Meaning of Sentences
+• Managing Linguistic Data
+
+Seaborn 
+• Visualizing Statistical relationships
+• Visualizing distribution of data sets
+• Visualizing linear relationships
+• Multiplot Grids
+• Plot Aesthetics
+Case study (1 hours).
