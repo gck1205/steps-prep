@@ -3,7 +3,10 @@ https://github.com/GoogleCloudPlatform/python-docs-samples/blob/16de3b44f1a9faec
 --------------------
 https://github.com/Joel-hanson/joel-hanson.github.io/blob/main/content/posts/01-how-to-load-csv-using-cpython.md
 ----------------------
+---Streaming---------
+https://github.com/subhamkharwal/spark-streaming-with-pyspark/tree/master/datasets/devices
 
+https://github.com/subhamkharwal/spark-streaming-with-pyspark/blob/master/02_reading_from_files.ipynb
 ==============================================================
 gcloud composer environments run composer-advanced-lab \
 --location europe-west1 variables -- \

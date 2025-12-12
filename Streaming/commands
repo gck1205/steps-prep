@@ -1,0 +1,19 @@
+
+---list the topics
+kafka-topics --list --bootstrap-server localhost:9092
+------------create topic
+kafka-topics --create --topic topic1 --bootstrap-server localhost:9092
+kafka-topics --create --topic device-data --bootstrap-server localhost:9092
+---describe topic
+kafka-topics --describe --bootstrap-server localhost:9092
+--create topic with partitions and replication factor
+kafka-topics --create --topic topic2 --partitions 3 --replication-factor 2 --bootstrap-server localhost:9092
+------describe topic 
+kafka-topics --describe --bootstrap-server localhost:9092
+---------Get offsets of the topics
+kafka-get-offsets --topic topic2  --bootstrap-server localhost:9092
+----------produce messages to topic
+kafka-console-producer --topic topic2  --bootstrap-server localhost:9092
+kafka-console-producer --topic device-data  --bootstrap-server localhost:9092
+---
+ kafka-console-consumer --topic topic2  --bootstrap-server localhost:9092 --partition 2 --offset earliest
