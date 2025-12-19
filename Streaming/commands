@@ -7,7 +7,8 @@ kafka-topics --create --topic device-data --bootstrap-server localhost:9092
 ---describe topic
 kafka-topics --describe --bootstrap-server localhost:9092
 --create topic with partitions and replication factor
-kafka-topics --create --topic topic2 --partitions 3 --replication-factor 2 --bootstrap-server localhost:9092
+kafka-topics --create --topic topic2 --partitions 3 --replication-factor 2 --bootstrap-server localhost:29092
+kafka-topics --alter --topic device-data --partitions 8 --bootstrap-server localhost:29092
 ------describe topic 
 kafka-topics --describe --bootstrap-server localhost:9092
 ---------Get offsets of the topics

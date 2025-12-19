@@ -1,0 +1,6 @@
+2	Foundation: Introduction to LangChain - Python	10	https://academy.langchain.com/courses/foundation-introduction-to-langchain-python
+
+3	Foundation: Introduction to LangGraph - Python	12	https://academy.langchain.com/courses/intro-to-langgraph
+
+4	Quickstart: LangSmith Essentials	3	https://academy.langchain.com/courses/take/quickstart-langsmith-essentials/lessons/70020746-intro
+
