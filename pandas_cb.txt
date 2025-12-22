@@ -1,0 +1,201 @@
+import pandas as pd
+ 
+s1=pd.Series() #Empty Series
+
+print(s1)
+ 
+s1=pd.Series([10,2,"Hello",2.3]) 
+
+print(s1)
+ 
+s1=pd.Series({1:"Id",2:"Name",3:"Add"}) 
+
+print(s1)
+ 
+df1=pd.DataFrame() #Empty DataFrame
+
+print(df1)
+ 
+df2=pd.DataFrame({"Id":[101,102,103],"Name":["Ram",'Sam','John']})
+
+print(df2)
+----------------------
+df=pd.DataFrame([[101,'Ram'],[102,'Sam'],[103,'John'],[104,'Sam1']])
+
+print(df)
+
+print("")
+
+df=pd.DataFrame([[101,'Ram'],[102,'Sam'],[103,'John'],[104,'Sam1']],columns=['Id','Name'],index=['a','b','c','d'])
+
+print(df)
+ 
+import numpy as np
+
+df=pd.DataFrame(np.random.rand(2,3))
+
+print(df)
+
+print("")
+
+df=pd.DataFrame(np.random.rand(2,3),columns=['1stCol','2ndCol','3rdCol'],
+
+               index=['1stRow','2ndRow'])
+
+print(df)
+ 
+print(df['1stCol'])
+ 
+print(df)
+
+print("")
+
+print("Using loc")
+
+print(df.loc['1stRow'])
+
+print("")
+
+print("using iloc")
+
+print(df.iloc[0])
+ 
+student 51.csv
+ 
+ds=pd.read_csv(r"C:\Users\j.vaishnav\Documents\Python Scripts\student.csv")
+
+print(ds)
+ 
+print(ds.head()) #first 5rows
+ 
+print(ds.head(7)) #first 7rows
+ 
+print(ds.tail()) #last 5rows
+ 
+print(ds.tail(8)) #last 8rows
+ 
+break till 11:30
+ 
+print(ds.columns)
+ 
+print(ds.shape) #no of rows and cols
+ 
+print(ds.size) #total no of data
+ 
+print(ds.count()) #counting of non null values
+ 
+print(ds.dtypes)
+ 
+print(ds.describe())
+ 
+print(ds.isnull().sum())
+ 
+print(ds.count()) #counting of non null values
+ 
+print(ds.size)
+ 
+ds1=ds.fillna(0)
+
+print(ds1)
+ 
+ds1=ds.fillna({'name':'NotFound','class':'NotFound','mark':0,'gender':'NotFound'})
+
+print(ds1)
+ 
+ds1=ds.dropna()
+
+print(ds1)
+ 
+ds1.isnull().sum()
+ 
+print(ds1.duplicated())
+ 
+print(ds1.duplicated().sum())
+ 
+ds2=ds1.drop_duplicates()
+
+print(ds2)
+ 
+print(ds2.duplicated().sum())
+--------------------
+ds.to_csv(r"C:\Users\j.vaishnav\Documents\PythonExam\data2.csv",index=False)
+ 
+df1=pd.read_csv(r"C:\Users\j.vaishnav\Documents\PythonExam\data2.csv")
+
+print(df1)
+ 
+ds.to_json(r"C:\Users\j.vaishnav\Documents\PythonExam\data3.json")
+ 
+df1=pd.read_json(r"C:\Users\j.vaishnav\Documents\PythonExam\data3.json")
+
+print(df1)
+----------------------------
+import numpy as np
+import pandas as pd
+import seaborn as sns  # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+ 
+ds = pd.read_csv(r'C:\Users\s.kumar.shivaswamy\Downloads\tips.csv', delimiter=',')
+print(ds)
+ 
+sns.countplot(x='gender',data=ds)
+print(ds.gender.value_counts())
+sns.countplot(x='gender',hue='smoker',data=ds)
+plt.show()
+print(ds.gender.value_counts())
+ 
+sns.countplot(x='gender',hue='smoker',data=ds)
+print(ds.gender.value_counts())
+plt.show()
+---------------------------------------------------
+sns.countplot(x='gender',hue='time',data=ds)
+
+print(ds.gender.value_counts())
+ 
+sns.scatterplot(x='total_bill',y='tip',data=ds)
+
+ 
+sns.scatterplot(x='total_bill',y='tip',hue='gender',data=ds)
+
+ 
+sns.barplot(x='total_bill',y='day',data=ds)
+
+ 
+sns.scatterplot(x='total_bill',y='day',hue='gender',data=ds)
+
+ 
+sns.catplot(x='total_bill',y='day',hue='gender',data=ds,kind='bar')
+
+ 
+sns.catplot(x='day',data=ds,hue='gender')
+ 
+sns.catplot(x='day',y='total_bill',data=ds,kind="bar")
+ 
+sns.catplot(x='day',y='total_bill',data=ds,kind="bar",hue='gender')
+ 
+sns.catplot(x='day',y='total_bill',data=ds,kind="bar",hue='time')
+ 
+#KDE Plot
+
+sns.kdeplot(x='total_bill',data=ds)
+ 
+#KDE Plot
+
+sns.kdeplot(x='total_bill',data=ds,fill=True)
+ 
+#KDE Plot
+
+sns.kdeplot(x='tip',data=ds,fill=True)
+ 
+#KDE Plot
+
+sns.kdeplot(x='tip',data=ds,fill=True,hue='gender')
+ 
+#KDE Plot
+
+sns.kdeplot(x='total_bill',data=ds,fill=True,hue='gender')
+ 
+#KDE Plot
+
+sns.kdeplot(x='tip',data=ds,fill=True,hue='gender')
+ 
